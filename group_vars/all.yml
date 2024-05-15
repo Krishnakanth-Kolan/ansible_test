@@ -1,0 +1,11 @@
+---
+httpd_listen_port: 80
+ssl_certificate_path: /etc/ssl/certs/web.crt
+ssl_certificate_key_path: /etc/ssl/private/web.key
+cidr_block: 10.0.0.0/16
+cidr: 10.0.1.0/24
+cidr_ip: 0.0.0.0/0
+instance_type: t2.micro
+ami: ami-0d6857b844e855670
+key_name: 
+region: ap-southeast-2

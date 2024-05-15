@@ -1,0 +1,8 @@
+---
+- name: Deploy EC2 instances, configure VPC, and install httpd
+  hosts: localhost
+  gather_facts: no
+  roles:
+    - ec2_creation
+    - httpd
+    - ssl

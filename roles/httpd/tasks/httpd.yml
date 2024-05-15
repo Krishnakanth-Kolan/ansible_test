@@ -1,0 +1,27 @@
+---
+- name: Install httpd
+  yum:
+    name: httpd
+    state: present
+
+- name: Copy HTML file to first EC2 instance
+  get_url:
+    url: "{{ httpd_html_file_1 }}"
+    dest: /var/www/html/index.html
+  when: inventory_hostname == ec2_instances.instances[0].tags.Name
+  notify:
+    - restart httpd
+
+- name: Copy HTML file to second EC2 instance
+  get_url:
+    url: "{{ httpd_html_file_2 }}"
+    dest: /var/www/html/index.html
+  when: inventory_hostname == ec2_instances.instances[1].tags.Name
+  notify:
+    - restart httpd
+
+- name: Ensure httpd is started
+  service:
+    name: httpd
+    state: started
+    enabled: true
