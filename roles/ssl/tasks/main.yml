@@ -8,5 +8,4 @@
   openssl_certificate:
     path: "{{ ssl_certificate_path }}"
     privatekey_path: "{{ ssl_certificate_key_path }}"
-    common_name: "{{ ansible_fqdn }}"
     provider: selfsigned
